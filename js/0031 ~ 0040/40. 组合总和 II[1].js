@@ -21,7 +21,6 @@ let combinationSum2 = function (candidates, target) {
     let result = [];
     let dfs = (d, sum, combine) => {
         if (sum === target) {
-            // 由于要去重，先合并为字符串放入set中
             result.push(combine);
             return;
         }
