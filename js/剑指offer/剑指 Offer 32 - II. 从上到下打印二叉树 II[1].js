@@ -1,12 +1,10 @@
 /**
  * Definition for a binary tree node.
- * function TreeNode(val, left, right) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.left = (left===undefined ? null : left)
- *     this.right = (right===undefined ? null : right)
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
  * }
  */
-
 /**
  * @param {TreeNode} root
  * @return {number[][]}
@@ -16,14 +14,14 @@ let levelOrder = function (root) {
     let res = [], queue = [root], hh = 0, tt = 0;
 
     while (hh >= tt) {
-        let tmp = [], curLevelCnts = hh - tt + 1;
+        let tmp = [], curLevelCnts = hh - tt + 1; // curLevelCnts - 当前层的结点个数
 
         while (curLevelCnts--) {
             let node = queue[tt++];
             tmp.push(node.val);
 
-            if (node.left) queue[++hh] = node.left;
-            if (node.right) queue[++hh] = node.right;
+            if (node.left !== null) queue[++hh] = node.left;
+            if (node.right !== null) queue[++hh] = node.right;
         }
 
         res.push(tmp);
