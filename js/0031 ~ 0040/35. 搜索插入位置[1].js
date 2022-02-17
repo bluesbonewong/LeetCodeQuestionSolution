@@ -19,3 +19,29 @@ let searchInsert = function (nums, target) {
 
     return l;
 };
+
+// 另一种解法，虽然不如上面那个精妙，却是常规解题思路
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number}
+ */
+let searchInsert1 = function (nums, target) {
+    let idx = bsearch(0, nums.length - 1);
+
+    // 这里进行笨笨地判断就好
+    if (nums[idx] === target) return idx;
+    idx = nums[idx] < target ? idx + 1 : idx;
+    return idx;
+
+    function bsearch(l, r) {
+        while (l < r) {
+            let mid = l + r >> 1;
+
+            if (target <= nums[mid]) r = mid;
+            else l = mid + 1;
+        }
+
+        return l;
+    }
+};

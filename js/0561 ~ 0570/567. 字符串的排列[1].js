@@ -35,10 +35,10 @@ let checkInclusion = function (s1, s2) {
 
         // 对比滑动窗口长度和s1的长度，如果超过，就移动窗口
         if (j - i + 1 > s1.length) {
-            // 左侧未移动前，check
+            // 左侧未移动前，checkLeft
             if (check(s2[i])) cnt--;
             m2.set(s2[i], m2.get(s2[i]) - 1);
-            // 左侧移动后，check
+            // 左侧移动后，checkLeft
             if (check(s2[i])) cnt++;
 
             i++;
